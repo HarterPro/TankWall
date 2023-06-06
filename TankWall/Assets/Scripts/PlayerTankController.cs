@@ -20,19 +20,50 @@ public class PlayerTankController : MonoBehaviour
     private void Update()
     {
         // Получаем текущую скорость танка по оси X
-        float currentSpeed = rb.velocity.x;
+        float currentSpeedx = rb.velocity.x;
+        float currentSpeedy = rb.velocity.y;
 
         // Если танк движется вправо
-        if (currentSpeed > 0.1f)
+        if (currentSpeedx > 1f && currentSpeedy == 0)
         {
             // Поворачиваем вправо
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         // Если танк движется влево
-        else if (currentSpeed < -0.1f)
+        else if (currentSpeedx < -1f && currentSpeedy == 0)
         {
             // Поворачиваем влево
             transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        else if (currentSpeedx == 0 && currentSpeedy > 1f)
+        {
+            // Поворачиваем вверх
+            transform.rotation = Quaternion.Euler(0, 0, 90);
+        }
+        else if (currentSpeedx == 0 && currentSpeedy < -1f)
+        {
+            // Поворачиваем вниз
+            transform.rotation = Quaternion.Euler(0, 0, -90);
+        }
+        else if (currentSpeedx > 1f && currentSpeedy > 1f)
+        {
+            // Поворачиваем право-вверх
+            transform.rotation = Quaternion.Euler(0, 0, 45);
+        }
+        else if (currentSpeedx > 1f && currentSpeedy < -1f)
+        {
+            // Поворачиваем право-низ
+            transform.rotation = Quaternion.Euler(0, 0, -45);
+        }
+        else if (currentSpeedx < -1f && currentSpeedy > 1f)
+        {
+            // Поворачиваем лево-вверх
+            transform.rotation = Quaternion.Euler(0, 0, 135);
+        }
+        else if (currentSpeedx < -1f && currentSpeedy < -1f)
+        {
+            // Поворачиваем лево-низ
+            transform.rotation = Quaternion.Euler(0, 0, -135);
         }
     }
 

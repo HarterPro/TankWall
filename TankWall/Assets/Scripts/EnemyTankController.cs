@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class EnemyTankController : MonoBehaviour
 {
@@ -37,14 +38,50 @@ public class EnemyTankController : MonoBehaviour
             nextShotTime = Time.time + shotCooldown;
         }
 
-        // Проверяем направление движения танка
-        if (rb.velocity.x > 0.1f)
+        float currentSpeedx = rb.velocity.x;
+        float currentSpeedy = rb.velocity.y;
+
+
+        if (currentSpeedx > 0.1f && Math.Abs(currentSpeedx) > Math.Abs(currentSpeedy) * 2)
         {
+            // Поворачиваем вправо
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-        else if (rb.velocity.x < -0.1f)
+        // Если танк движется влево
+        else if (currentSpeedx < -0.1f && Math.Abs(currentSpeedx) > Math.Abs(currentSpeedy) * 2)
         {
+            // Поворачиваем влево
             transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        else if (currentSpeedy > 0.1f && Math.Abs(currentSpeedy) > Math.Abs(currentSpeedx) * 2)
+        {
+            // Поворачиваем вверх
+            transform.rotation = Quaternion.Euler(0, 0, 90);
+        }
+        else if (currentSpeedy < -0.1f && Math.Abs(currentSpeedy) > Math.Abs(currentSpeedx) * 2)
+        {
+            // Поворачиваем вниз
+            transform.rotation = Quaternion.Euler(0, 0, -90);
+        }
+        else if (currentSpeedx > 0.1f && currentSpeedy > 0.1f)
+        {
+            // Поворачиваем право-вверх
+            transform.rotation = Quaternion.Euler(0, 0, 45);
+        }
+        else if (currentSpeedx > 0.1f && currentSpeedy < -0.1f)
+        {
+            // Поворачиваем право-низ
+            transform.rotation = Quaternion.Euler(0, 0, -45);
+        }
+        else if (currentSpeedx < -0.1f && currentSpeedy > 0.1f)
+        {
+            // Поворачиваем лево-вверх
+            transform.rotation = Quaternion.Euler(0, 0, 135);
+        }
+        else if (currentSpeedx < -0.1f && currentSpeedy < -0.1f)
+        {
+            // Поворачиваем лево-низ
+            transform.rotation = Quaternion.Euler(0, 0, -135);
         }
     }
 

@@ -30,8 +30,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
-    Unity.Timeline.Editor.dll:
-    - TimelineProjectSettings
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -110,7 +108,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 7534}
     - Class: 114
-      Script: {instanceID: 8506}
+      Script: {instanceID: 8508}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -171,7 +169,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 6878}
     - Class: 114
-      Script: {instanceID: 28656}
+      Script: {instanceID: 7570}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -947,6 +945,12 @@ ScriptsOnlyBuild:
     className: PositionAsUV1
   - hash:
       serializedVersion: 2
+      Hash: ea00e6c9abec730664153896b0ebf08c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MainMenuController
+  - hash:
+      serializedVersion: 2
       Hash: 87ff43d2baf3385cba327d8f803a4ebb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -1125,12 +1129,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: ea00e6c9abec730664153896b0ebf08c
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: MainMenuController
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainMenu.unity

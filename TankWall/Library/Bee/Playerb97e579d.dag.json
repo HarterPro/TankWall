@@ -1564,7 +1564,7 @@
     {
       "Annotation": "WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info",
       "ActionType": "WriteTextFile",
-      "WriteTextFilePayload": "DefaultCompany\nTankWall",
+      "WriteTextFilePayload": "HPoint\nTankWall",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info"

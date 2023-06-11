@@ -14,8 +14,23 @@ public class PlayerTankController : MonoBehaviour
     // Текстовое поле для отображения количества жизней
     public Text lifeText;
 
+    // Пуля для стрельбы
+    public GameObject bulletPrefab;
+
+    // Место, откуда вылетают пули
+    public Transform bulletSpawn;
+
+    // Время между выстрелами
+    public float fireRate = 0.5f;
+
+    private float nextFire = 0f;
+
     // Компонент Rigidbody2D танка
     private Rigidbody2D rb;
+
+    private GameObject enemy;
+
+
 
     void Start()
     {
@@ -27,10 +42,19 @@ public class PlayerTankController : MonoBehaviour
 
         // Обновляем отображение количества жизней
         UpdateLifeDisplay();
+
+        enemy = GameObject.FindWithTag("Enemy");
     }
 
     private void Update()
     {
+        // Стрельба при нажатии на пробел
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            Shoot();
+        }
+
         // Получаем текущую скорость танка по осям X и Y
         float currentSpeedx = rb.velocity.x;
         float currentSpeedy = rb.velocity.y;
@@ -113,5 +137,17 @@ public class PlayerTankController : MonoBehaviour
 
             Destroy(collision.gameObject);
         }
+    }
+
+    void Shoot()
+    {
+        GameObject bulletInstance = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+        
+        // Удалить снаряд через 5 секунд
+        Destroy(bulletInstance, 5f);
+
+        Rigidbody2D bulletRb = bulletInstance.GetComponent<Rigidbody2D>();
+        Vector2 force = (enemy.transform.position - bulletSpawn.position).normalized * 10.0f;
+        bulletRb.AddForce(force, ForceMode2D.Impulse);
     }
 }
